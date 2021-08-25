@@ -5,9 +5,12 @@ def example_change(change=1000):
     for coin in coins:
         count = int(change/coin) + count
         change = change - int(change/coin) * coin
-    print(count)
+    return count
 
-# example_change(9130)
+example_01_answer = example_change(8890)
+print(f"거스름돈 예제 답 : {example_01_answer}개")
+
+
 
 def example_rule_of_big_number():
     n = 5; m = 8; k = 3
@@ -27,10 +30,10 @@ def example_rule_of_big_number():
             for num in numlist:
                 second_big_num.append(big_num - num)
             second_big_num.sort()
-            
 
 
 
 
 
-example_rule_of_big_number()
+
+# example_rule_of_big_number()
