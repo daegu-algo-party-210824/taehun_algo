@@ -1,4 +1,4 @@
-def example_change(change):
+def coin_change_algo(change):
     # 예제01-거스름돈
     count = 0
     coins = [500, 100, 50, 10]
@@ -8,7 +8,7 @@ def example_change(change):
     return count
 
 change = 1370
-answer = example_change(change)
+answer = coin_change_algo(change)
 print(f"거스름돈 {change}일때 동전 {answer}개 교환")
 
 
