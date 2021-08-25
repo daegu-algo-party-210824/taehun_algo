@@ -1,4 +1,4 @@
-def example_change(change=1000):
+def example_change(change):
     # 예제01-거스름돈
     count = 0
     coins = [500, 100, 50, 10]
@@ -7,8 +7,9 @@ def example_change(change=1000):
         change = change - int(change/coin) * coin
     return count
 
-example_01_answer = example_change(8890)
-print(f"거스름돈 예제 답 : {example_01_answer}개")
+change = 1370
+answer = example_change(change)
+print(f"거스름돈 {change}일때 동전 {answer}개 교환")
 
 
 
