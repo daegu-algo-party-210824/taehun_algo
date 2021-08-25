@@ -47,3 +47,22 @@ rows = [
 ]
 answer = num_card_game(n, m, rows)
 print(f"숫자카드게임 : n={n}, m={m}, rows={rows} 일때 답은{answer}")
+
+def make_one(n, k):
+    # 1이 될때까지
+    count = 0
+    while True:
+        if n % k != 0:
+            n = n - 1
+        else:
+            n = n / k
+        count = count + 1
+
+        if n == 1:
+            break
+
+    return count
+
+n = 30 ; k = 5
+answer = make_one(n, k)
+print(f"1이 될때까지 : n={n}, k={k} 일때 답은{answer}")
