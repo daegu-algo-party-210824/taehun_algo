@@ -13,26 +13,22 @@ print(f"거스름돈 {change}일때 동전 {answer}개 교환")
 
 
 
-def rule_of_big_number(m, k):
+def rule_of_big_number(nums, m, k):
     # 큰수의 법칙
-    n = 5;
-    num_list = [2, 4, 5, 4, 6]
-
     answer = 0
     count = -1
     big_num = 0
 
     for i in range(m):
         count = count + 1
-        big_num = max(num_list)
+        big_num = max(nums)
         if count == k:
-            num_list.sort()
-            big_num = num_list[-2]
+            nums.sort()
+            big_num = nums[-2]
             count = 0
-
         answer = big_num + answer
     return answer
 
-m = 8 ; k = 3
-answer = rule_of_big_number(m, k)
-print(f"큰수의 법칙 m={m}, k={k}일때 답은{answer}")
+nums = [3, 4, 3, 4, 3]; m = 7 ; k = 2
+answer = rule_of_big_number(nums, m, k)
+print(f"큰수의 법칙 nums={nums}, m={m}, k={k} 일때 답은{answer}")
