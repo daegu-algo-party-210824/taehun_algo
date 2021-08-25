@@ -31,7 +31,7 @@ nums = [3, 4, 3, 4, 3]; m = 7 ; k = 2
 answer = rule_of_big_number(nums, m, k)
 print(f"큰수의 법칙 : nums={nums}, m={m}, k={k} 일때 답은{answer}")
 
-def bum_card_game(n, m, rows):
+def num_card_game(n, m, rows):
     # 숫자카드게임
     min_list = [min(r) for r in rows]
     answer = max(min_list)
@@ -43,5 +43,5 @@ rows = [
     [7, 3, 1, 8],
     [3, 3, 3, 4],
 ]
-answer = bum_card_game(n, m, rows)
+answer = num_card_game(n, m, rows)
 print(f"숫자카드게임 : n={n}, m={m}, rows={rows} 일때 답은{answer}")
