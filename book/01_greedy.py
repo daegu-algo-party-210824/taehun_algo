@@ -5,6 +5,7 @@ def coin_change_algo(change):
     for coin in coins:
         count = int(change/coin) + count
         change = change - int(change/coin) * coin
+
     return count
 
 change = 1370
@@ -25,6 +26,7 @@ def rule_of_big_number(nums, m, k):
             big_num = nums[-2]
             count = 0
         answer = big_num + answer
+
     return answer
 
 nums = [3, 4, 3, 4, 3]; m = 7 ; k = 2
@@ -35,8 +37,8 @@ def num_card_game(n, m, rows):
     # 숫자카드게임
     min_list = [min(r) for r in rows]
     answer = max(min_list)
-    return answer
 
+    return answer
 
 n = 2 ; m = 4
 rows = [
