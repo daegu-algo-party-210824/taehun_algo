@@ -1,5 +1,5 @@
 def coin_change_algo(change):
-    # 예제01-거스름돈
+    # 거스름돈
     count = 0
     coins = [500, 100, 50, 10]
     for coin in coins:
@@ -13,7 +13,8 @@ print(f"거스름돈 {change}일때 동전 {answer}개 교환")
 
 
 
-def example_rule_of_big_number():
+def rule_of_big_number():
+    # 큰수의 법칙
     n = 5; m = 8; k = 3
     num_list = [2, 4, 5, 4, 6]
 
