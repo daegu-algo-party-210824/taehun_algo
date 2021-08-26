@@ -1,7 +1,8 @@
+from memory_profiler import profile
+
 """
 page : 86 ~ 102
 """
-from memory_profiler import profile
 
 @profile
 def coin_change_algo(change):
