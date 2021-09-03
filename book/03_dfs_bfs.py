@@ -134,41 +134,41 @@ def bfs_basic(graph, start, visited):
                 queue.append(i)
                 visited[i] = True
 
-def freeze_drinks(n, m, ice_shape):
-    # 실전문제 음료수 얼려 먹기
-
-    # 0의 row 위치파악
-    # stack_list = []
-    # for num in range(n):
-    #     for i in ice_shape[num]:
-    #         if i == 0:
-    #             stack_list.append(i)
-    for i in range(n):
-        for ii in range(m):
-            try:
-                up = ice_shape[i-1][ii] # 상
-                left = ice_shape[i][ii-1]  # 좌
-                down = ice_shape[i+1][ii] # 하
-                right = ice_shape[i][ii+1] # 우
-                original = ice_shape[i][ii]
-            except:
-                up = 0
-                left = 0
-
-            if original == 0:
-                if up == 0 and left == 0 and down == 0 and right == 0 :
-                    print('a')
-
-                if up == 1 and left == 1 and down == 1 and right == 1 :
-                    print('b')
-
-
 n = 4
 m = 5
-ice_shape = [
+
+graph = [
     [0, 0, 1, 1, 0], # (0, 0) (0, 1) (0, 2) (0, 3) (0, 4)
     [0, 0, 0, 1, 1], # (1, 0) (1, 1) (1, 2) (1, 3) (1, 4)
     [1, 1, 1, 1, 1],
     [0, 0, 0, 0, 0], # (3, 0) (3, 1) (3, 2) (3, 3) (3, 4)
 ]
-freeze_drinks(n, m, ice_shape)
+
+def dfs_01(x, y):
+
+    # 실전문제-음료수 얼려 먹기, pg 149
+
+    # 주어진 범위를 벗어나면 종료
+    if x <= -1 or x >= n or y <= -1 or y >= m:
+        return False
+
+    # 현재 노드를 방문 처리 하지 않았다면
+    if graph[x][y] == 0:
+        graph[x][y] = 1
+        # 상하좌우 위치 모두 재귀적으로 호출
+
+        dfs_01(x - 1, y)
+        dfs_01(x, y - 1)
+        dfs_01(x + 1, y)
+        dfs_01(x, y + 1)
+        return True
+    return False
+
+
+
+result = 0
+for i in range(n):
+    for j in range(m):
+        if dfs_01(i, j) == True:
+            result += 1
+print(result)
