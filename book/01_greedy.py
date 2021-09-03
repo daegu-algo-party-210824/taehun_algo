@@ -146,7 +146,7 @@ def choose_ball():
 
 def eating_live():
     # 무지의 먹방 라이브, pg 316
-    food_times = [3, 1, 2]
+    food_times = [3, 1, 2] #[1, 0, 0]
     k = 5
     total_time = sum(food_times)
 
@@ -168,4 +168,17 @@ def eating_live():
         if food_time == total_time - k:
             print(num+1)
 
-eating_live()
+
+    if sum(food_times) == 0:
+        return -1
+
+# eating_live()
+
+def oil():
+    n = 4 # 도시개수
+    distance = [2, 3, 1] # 거리
+    oil_price = [5, 2, 4, 1] # 오일가격
+
+    total_d = sum(distance)
+    for oil_p in oil_price:
+        for d in distance:
