@@ -144,8 +144,8 @@ graph = [
     [0, 0, 0, 0, 0], # (3, 0) (3, 1) (3, 2) (3, 3) (3, 4)
 ]
 
-def dfs_01(x, y):
 
+def dfs_01(x, y):
     # 실전문제-음료수 얼려 먹기, pg 149
 
     # 주어진 범위를 벗어나면 종료
@@ -155,20 +155,126 @@ def dfs_01(x, y):
     # 현재 노드를 방문 처리 하지 않았다면
     if graph[x][y] == 0:
         graph[x][y] = 1
-        # 상하좌우 위치 모두 재귀적으로 호출
 
+        # 상하좌우 위치 모두 재귀적으로 호출
         dfs_01(x - 1, y)
         dfs_01(x, y - 1)
         dfs_01(x + 1, y)
         dfs_01(x, y + 1)
+
         return True
     return False
 
 
 
-result = 0
-for i in range(n):
-    for j in range(m):
-        if dfs_01(i, j) == True:
-            result += 1
-print(result)
+# result = 0
+# for i in range(n):
+#     for j in range(m):
+#         if dfs_01(i, j) == True:
+#             result += 1
+#
+# print(result)
+
+def recur(n):
+    if n == 10:
+        return
+    print(f'위 {n}번째 함수 시작')
+    recur(n+1)
+    print(f'위 {n}번째 함수 종료')
+    print(f'아래 {n}번째 함수 시작')
+    recur(n+1)
+    print(f'아래 {n}번째 함수 종료')
+    # recur(n+1)
+    # print(n)
+
+    return 'h'
+
+
+def bfs_01(n, m, graph):
+    # 미로탈출, pg 152
+    from collections import deque
+
+    queue = deque()
+    move = []
+    for i, g in enumerate(graph, 1):
+        print(g)
+        for j, p in enumerate(g, 1):
+            if p == 1:
+                queue.append(1)
+            if p == 0:
+                pass
+
+    print(queue)
+
+
+# n = 5
+# m = 6
+# graph = [
+#     [],
+#     [1, 0, 1, 0, 1, 0],
+#     [1, 1, 1, 1, 1, 1],
+#     [0, 0, 0, 0, 0, 1],
+#     [1, 1, 1, 1, 1, 1],
+#     [1, 1, 1, 1, 1, 1],
+# ]
+#
+# bfs_01(n, m, graph)
+
+
+def find_distance():
+    from collections import deque
+    # 특정 거리의 도시 찾기
+    n = 4 # 도시의 개수
+    m = 4 # 도로의 개수
+    k = 1 # 거리정보
+    x = 1 # 출발 도시 번호
+
+    graph = [
+        [],
+        [1, 2],
+        [1, 3],
+        [2, 3],
+        [2, 4],
+    ]
+
+    distance = [-1] * (n+1)
+    distance[x] = 0
+
+    q = deque([x])
+    while q:
+        now = q.popleft()
+        for next_node in graph[now]:
+            if distance[next_node] == -1:
+                distance[next_node] = distance[now] + 1
+                q.append(next_node)
+                print(q)
+            print(distance)
+
+    # 최단 거리가 k인 모든 도시의 번호를 오름차순으로 출력
+    print(distance)
+    check = False
+    for i in range(1, n+1):
+        if distance[i] == k:
+            print(i)
+            check = True
+
+    if check == False:
+        print(-1)
+
+
+find_distance()
+
+# k_x = []
+# for g in graph:
+#     if g[0] == x:
+#         k_x.append(g[1])
+#
+#     if g[0] in k_x and g[1] not in k_x:
+#         k_x.append(g[1])
+#
+# if k == 1:
+#     for x in k_x[:2]:
+#         print(x)
+# else:
+#     pass
+# print(k_x)
