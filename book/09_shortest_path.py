@@ -1,8 +1,10 @@
-node = 6
-d_count = 11
+n = 6
+
+m = 11
+
+start = 1
 
 graph = [
-    [1],
     [1, 2, 2],
     [1, 3, 5],
     [1, 4, 1],
@@ -16,48 +18,39 @@ graph = [
     [5, 6, 2],
 ]
 
-visited = [int(1e9)] * (node+1)
-check = [False] * (node+1)
+INF = int(1e9)
+
+
+graph = [[] for i in range(n+1)]
+graph[1].append((2, 2))
+graph[1].append((3, 5))
+graph[1].append((4, 1))
+graph[2].append((3, 3))
+graph[2].append((4, 2))
+graph[3].append((2, 3))
+graph[3].append((6, 5))
+graph[4].append((3, 3))
+graph[4].append((5, 1))
+graph[5].append((3, 1))
+graph[5].append((6, 2))
+
+
+visited = [False] * (n+1)
+
+distance = [INF] * (n+1)
 
 # count each node list
-node_count = [0]
-count = 0
-for i in range(1, node+1):
-    for g in graph:
-        if g[0] == i:
-            count += 1
-    node_count.append(count)
-    count = 0
-
-
-# # find shortest path node
-def shortest_node(v, c):
-    print(v, c)
-    for i in range(0, len(c)):
-        if c[i] == True:
-            v.remove(v[i])
-
-
-
-# 노드별 방문 기록
-for i in range(1, node+1):
-    for ii in range(0, d_count):
-        if len(graph[ii]) == 1:
-            visited[graph[ii][0]] = 0
-
-        elif i == graph[ii][0]:
-            visited[graph[ii][1]] = graph[ii][2]
-    check[i] = True
-    min_node = shortest_node(visited, check)
-
-
-
-
-
-
-
-
-
-
-# check_visited()
-print(visited)
+# def get_smallest_node():
+#     min_value = INF
+#     index = 0
+#     for i in range(1, n+1):
+#         if distance[i] < min_value and not visited[i]:
+#             min_value = distance[i]
+#             index = i
+#     return index
+#
+# def dijkstra(start):
+#     distance[start] = 0
+#     visited[start] = True
+#     for j in graph[start]:
+#         distance[j[0]] = j[1]
